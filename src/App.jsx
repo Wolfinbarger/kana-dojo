@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { kana } from "./data";
 import "./App.css";
+import Tables from "./components/Tables/Tables";
 
 function App() {
-  return <h2>{"hi"}</h2>;
+  const [data, setData] = useState(kana);
+  return <Tables data={data} />;
 }
 
 export default App;
