@@ -5,7 +5,7 @@ const Tables = ({ data }) => {
   const regularHiragana = Object.keys(hiragana).map((key) => {
     if (key !== "combo") return String(key);
   });
-  console.log(regularHiragana);
+  console.log(hiragana);
 
   return (
     <section>
