@@ -1,11 +1,11 @@
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-const Tables = ({ data }) => {
-  const { hiragana, katakana } = data;
 
-  const regularHiragana = Object.keys(hiragana).map((key) => {
-    if (key !== "combo") return String(key);
-  });
-  console.log(hiragana);
+const Tables = ({ hiragana, katakana }) => {
+  const [regHiragana, setRegHirigana] = useState(hiragana.regular);
+  const [comboHiragana, setComboHiragana] = useState(hiragana.combo);
+  const [regKatakana, setRegKatakana] = useState(katakana.regular);
+  const [comboKatakana, setComboKatakana] = useState(katakana.combo);
 
   return (
     <section>
@@ -21,9 +21,6 @@ const Tables = ({ data }) => {
           </tr>
         </tbody>
       </table>
-      {/* {regularHiragana.map((k) => {
-        return <p key={uuidv4()}>{k}</p>;
-      })} */}
     </section>
   );
 };
