@@ -5,7 +5,7 @@ import Tables from "./components/Tables/Tables";
 
 function App() {
   const [data, setData] = useState(kana);
-  return <Tables data={data} />;
+  return <Tables {...data} />;
 }
 
 export default App;
