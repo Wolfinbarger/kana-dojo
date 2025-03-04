@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { kana } from "./data";
 import CollapsibleKanaTable from "./components/Table/CollapsibleKanaTable";
 
