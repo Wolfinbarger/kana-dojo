@@ -3,7 +3,6 @@ import { kana } from "./data";
 import CollapsibleKanaTable from "./components/Table/CollapsibleKanaTable";
 
 const KanaPracticeApp = () => {
-  const [data, setData] = useState(kana);
   return (
     <>
       {Object.entries(kana).map(([key, value]) => (
