@@ -3,7 +3,9 @@ const CollapsibleKanaTable = ({ scriptName, data }) => {
     <>
       <details>
         <summary>{scriptName}</summary>
-        <p></p>
+        {Object.entries(data).map(([key, values]) => (
+          <p key={`${scriptName}-${key}`}>{Object.values(values)}</p>
+        ))}
       </details>
     </>
   );
