@@ -1,11 +1,8 @@
-import { useState } from "react";
-import { kana } from "./data";
 import "./App.css";
-import Tables from "./components/Tables/Tables";
+import KanaPracticeApp from "./KanaPracticeApp";
 
 function App() {
-  const [data, setData] = useState(kana);
-  return <Tables {...data} />;
+  return <KanaPracticeApp />;
 }
 
 export default App;

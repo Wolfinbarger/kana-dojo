@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
+
 const Tables = ({ hiragana, katakana }) => {
   const regularHiragana = hiragana.regular;
 
@@ -9,7 +10,7 @@ const Tables = ({ hiragana, katakana }) => {
   const rowData = (e) => {
     let tmpRowData = [
       <td key={uuidv4()}>
-        <input type="checkbox" names={e} id={e} />
+        <input type='checkbox' names={e} id={e} />
       </td>,
     ];
     for (let i = 0; i < e.length; i++) {
@@ -31,19 +32,19 @@ const Tables = ({ hiragana, katakana }) => {
           <tr>
             <th></th>
             <th>
-              <input type="checkbox" names="a" id="a" />
+              <input type='checkbox' names='a' id='a' />
             </th>
             <th>
-              <input type="checkbox" names="i" id="i" />
+              <input type='checkbox' names='i' id='i' />
             </th>
             <th>
-              <input type="checkbox" names="u" id="u" />
+              <input type='checkbox' names='u' id='u' />
             </th>
             <th>
-              <input type="checkbox" names="e" id="e" />
+              <input type='checkbox' names='e' id='e' />
             </th>
             <th>
-              <input type="checkbox" names="o" id="o" />
+              <input type='checkbox' names='o' id='o' />
             </th>
           </tr>
         </tbody>
