@@ -1,11 +1,11 @@
 import { kana } from "./data";
-import CollapsibleKanaTable from "./components/Table/CollapsibleKanaTable";
+import Tables from "./components/Table/Kanas";
 
 const KanaPracticeApp = () => {
   return (
     <>
       {Object.entries(kana).map(([key, value]) => (
-        <CollapsibleKanaTable key={key} scriptName={key} data={value} />
+        <Tables key={key} scriptName={key} data={value} />
       ))}
     </>
   );
