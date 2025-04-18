@@ -1,5 +1,5 @@
 import { kana } from "./data";
-import Tables from "./components/Table/Kanas";
+import Tables from "./components/Tables/Tables";
 
 const KanaPracticeApp = () => {
   return (
