@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const Table = ({ props }) => {
-  console.log(props);
   return (
     <>
       {Object.entries(props).map(([key, value]) => {
