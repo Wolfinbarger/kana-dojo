@@ -1,7 +1,20 @@
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import Table from "./Table";
 
-const Kanas = (kana) => {
-  return <section>{}</section>;
+const Kanas = ({ kana }) => {
+  const kanas = Object.keys(kana);
+  console.log(Object.entries(kana));
+  return (
+    <section>
+      {Object.entries(kana).map(([key, value]) => {
+        return (
+          <details key={uuidv4()}>
+            <summary>{key}</summary>
+            <Table props={value} />
+          </details>
+        );
+      })}
+    </section>
+  );
 };
 export default Kanas;
