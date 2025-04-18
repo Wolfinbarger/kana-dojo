@@ -7,3 +7,6 @@ td {
 th {
   min-width: 2em;
 }
+.selected {
+  background-color: greenyellow;
+}
