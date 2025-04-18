@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import Table from "./Table/Table";
+import Table from "./Table";
 
 const Kanas = ({ kana }) => {
   const kanas = Object.keys(kana);
