@@ -42,9 +42,15 @@ const Table = ({ props }) => {
           for (let i = 1; i < rows.length; i++) {
             const cell = rows[i].children[columnIndex];
             if (cell && cell.tagName.toLowerCase() === "td") {
-              cell.classList.contains("selected")
-                ? cell.classList.remove("selected")
-                : cell.classList.add("selected");
+              if (
+                cell.classList.contains("selected") &&
+                !rows[i].querySelector("th").classList.contains("selected")
+              ) {
+                cell.classList.remove("selected");
+              } else {
+                cell.classList.add("selected");
+              }
+
               columnCells.push(cell);
             }
           }
@@ -52,19 +58,94 @@ const Table = ({ props }) => {
       }
 
       if (isRowHeader) {
-        clickedCell.classList.contains("selected")
-          ? clickedCell.classList.remove("selected")
-          : clickedCell.classList.add("selected");
+        const table = clickedCell.closest("table");
+        const thead = table.querySelector("thead");
+        const allheaderCells = thead.querySelectorAll("th");
 
-        const row = clickedCell.closest("tr");
-        row.classList.contains("selected")
-          ? row.classList.remove("selected")
-          : row.classList.add("selected");
+        const headerCells = [...allheaderCells].slice(1);
+        const rowTd = clickedCell.parentElement.querySelectorAll("td");
+        if (clickedCell.classList.contains("selected")) {
+          clickedCell.classList.remove("selected");
+
+          rowTd.forEach((td, index) => {
+            const headerCell = headerCells[index];
+            if (
+              td.classList.contains("selected") &&
+              headerCell &&
+              !headerCell.classList.contains("selected")
+            ) {
+              td.classList.remove("selected");
+            }
+          });
+        } else {
+          clickedCell.classList.add("selected");
+          rowTd.forEach((td) => {
+            if (!td.classList.contains("selected")) {
+              td.classList.add("selected");
+            }
+          });
+        }
       }
     } else {
-      clickedCell.classList.contains("selected")
-        ? clickedCell.classList.remove("selected")
-        : clickedCell.classList.add("selected");
+      const table = clickedCell.closest("table");
+      const thead = table.querySelector("thead");
+      const allheaderCells = thead.querySelectorAll("th");
+      const allRowCells = clickedCell.parentElement.querySelectorAll("td");
+      const rowCells = [...allRowCells];
+
+      const clickedCellIndex = rowCells.findIndex(
+        (td) => td.innerText === clickedCell.innerText
+      );
+
+      const headerCells = [...allheaderCells].slice(1);
+      if (clickedCell.classList.contains("selected")) {
+        clickedCell.classList.remove("selected");
+        clickedCell.parentElement
+          .querySelector("th")
+          .classList.remove("selected");
+        headerCells[clickedCellIndex].classList.remove("selected");
+      } else {
+        clickedCell.classList.add("selected");
+        if (
+          Array.from(clickedCell.parentElement.querySelectorAll("td")).every(
+            (td) => td.classList.contains("selected")
+          )
+        ) {
+          clickedCell.parentElement
+            .querySelector("th")
+            .classList.add("selected");
+        }
+
+        const rows = clickedCell.closest("table").querySelectorAll("tr");
+        const arrCol = [];
+        rows.forEach((row) =>
+          arrCol.push(row.childNodes[clickedCellIndex + 1])
+        );
+
+        if (arrCol.slice(1).every((td) => td.classList.contains("selected"))) {
+          clickedCell
+            .closest("table")
+            .querySelectorAll("thead th")
+            [clickedCellIndex + 1].classList.add("selected");
+        }
+        // const columnCells = [];
+
+        // for (let i = 1; i < rows.length; i++) {
+        //   const cell = rows[i].children[columnIndex];
+        //   if (cell && cell.tagName.toLowerCase() === "td") {
+        //     if (
+        //       cell.classList.contains("selected") &&
+        //       !rows[i].querySelector("th").classList.contains("selected")
+        //     ) {
+        //       cell.classList.remove("selected");
+        //     } else {
+        //       cell.classList.add("selected");
+        //     }
+
+        //     columnCells.push(cell);
+        //   }
+        // }
+      }
     }
   };
 

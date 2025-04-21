@@ -4,6 +4,9 @@ td {
   border: 1px solid black;
 }
 
+table {
+  border-spacing: 0;
+}
 th {
   min-width: 2em;
 }
