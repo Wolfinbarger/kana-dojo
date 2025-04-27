@@ -10,6 +10,6 @@ table {
 th {
   min-width: 2em;
 }
-.selected {
+.select {
   background-color: greenyellow;
 }

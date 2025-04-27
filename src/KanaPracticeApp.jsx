@@ -1,5 +1,5 @@
 import { kana } from "./data";
-import Tables from "./components/Tables/Tables";
+import Kanas from "./components/Kana/Kanas";
 import Kana from "./components/Kana/Kana";
 
 const KanaPracticeApp = () => {
@@ -9,7 +9,7 @@ const KanaPracticeApp = () => {
         <Kana />
       </div>
       <div className='container__tables'>
-        <Tables kana={kana} />
+        <Kanas kana={kana} />
       </div>
     </div>
   );
